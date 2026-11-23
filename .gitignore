@@ -1,0 +1,6 @@
+# Compiled Java classes
+*.class
+out/
+
+# JVM crash logs
+hs_err_pid*.log
