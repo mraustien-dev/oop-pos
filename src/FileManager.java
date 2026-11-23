@@ -1,18 +1,11 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-
-// Reads and writes text files. Each line of a file is one record.
+import java.io.*;
+import java.util.*;
 public class FileManager {
     private String folder;
 
     public FileManager(String folder) {
         this.folder = folder;
-        new File(folder).mkdirs(); // create the folder if it does not exist
+        new File(folder).mkdirs();
     }
 
     public boolean exists(String fileName) {

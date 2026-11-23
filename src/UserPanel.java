@@ -12,10 +12,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-// The "Users" tab (Admin only): see, add, edit and delete accounts.
 public class UserPanel extends JPanel {
     private Store store;
-    private User loggedIn; // the admin using this screen
+    private User loggedIn;
     private DefaultTableModel model = new DefaultTableModel(new String[] {"Username", "Full Name", "Role"}, 0);
     private JTable table = new JTable(model);
 
@@ -114,7 +113,7 @@ public class UserPanel extends JPanel {
 
         JPanel form = new JPanel(new GridLayout(6, 2, 8, 8));
         form.add(new JLabel("Username:"));
-        form.add(new JLabel(user.getUsername())); // cannot be changed
+        form.add(new JLabel(user.getUsername()));
         form.add(new JLabel("Full Name:"));
         form.add(fullNameField);
         form.add(new JLabel("New Password:"));
@@ -169,7 +168,6 @@ public class UserPanel extends JPanel {
 
     public void refresh() {
         model.setRowCount(0);
-        // Passwords are not shown in the table on purpose.
         for (User u : store.getUsers()) {
             model.addRow(new Object[] {u.getUsername(), u.getFullName(), u.getRole()});
         }

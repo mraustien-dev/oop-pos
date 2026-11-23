@@ -8,12 +8,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-// The main window after login. It has tabs: Sell, Products and Users (admin only), History.
 public class MainWindow extends JFrame {
     private Store store;
     private SellPanel sellPanel;
-    private ProductPanel productPanel; // stays null for a cashier
-    private UserPanel userPanel;       // stays null for a cashier
+    private ProductPanel productPanel;
+    private UserPanel userPanel;
     private HistoryPanel historyPanel;
 
     public MainWindow(Store store, User user) {
@@ -24,7 +23,6 @@ public class MainWindow extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // ----- Top bar (dark): app name on the left, user + logout on the right -----
         JLabel appName = new JLabel("JavaPOS");
         appName.setFont(Style.boldFont(22));
         appName.setForeground(Style.WHITE);
@@ -36,7 +34,7 @@ public class MainWindow extends JFrame {
         logoutButton.addActionListener(e -> logout());
 
         JPanel rightSide = new JPanel(new FlowLayout(FlowLayout.RIGHT, 12, 0));
-        rightSide.setOpaque(false); // see-through, so the dark color shows
+        rightSide.setOpaque(false);
         rightSide.add(userLabel);
         rightSide.add(logoutButton);
 
@@ -46,13 +44,11 @@ public class MainWindow extends JFrame {
         topBar.add(appName, BorderLayout.WEST);
         topBar.add(rightSide, BorderLayout.EAST);
 
-        // ----- Tabs -----
         JTabbedPane tabs = new JTabbedPane();
         tabs.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         sellPanel = new SellPanel(store, user);
         tabs.addTab("   Sell   ", sellPanel);
 
-        // POLYMORPHISM: we just ask the user. Admin says true, Cashier says false.
         if (user.canManageProducts()) {
             productPanel = new ProductPanel(store);
             tabs.addTab("   Products   ", productPanel);
@@ -63,7 +59,6 @@ public class MainWindow extends JFrame {
         historyPanel = new HistoryPanel(store);
         tabs.addTab("   History   ", historyPanel);
 
-        // When switching tabs, reload the tables so they show the newest data.
         tabs.addChangeListener(e -> refreshAll());
 
         add(topBar, BorderLayout.NORTH);

@@ -10,7 +10,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-// The "Products" tab (Admin only): add, edit, restock and delete products.
 public class ProductPanel extends JPanel {
     private Store store;
     private DefaultTableModel model = new DefaultTableModel(new String[] {"ID", "Name", "Price", "Stock"}, 0);

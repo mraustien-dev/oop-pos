@@ -1,11 +1,10 @@
-// One finished sale (a receipt).
 public class Transaction {
     private String id;
     private String dateTime;
     private String cashier;
     private double total;
     private double cash;
-    private String items; // example: "Coke x2 = 40.00;Bread x1 = 25.00"
+    private String items;
 
     public Transaction(String id, String dateTime, String cashier, double total, double cash, String items) {
         this.id = id;

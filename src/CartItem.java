@@ -1,4 +1,3 @@
-// One line in the cart: which product and how many.
 public class CartItem {
     private Product product;
     private int quantity;

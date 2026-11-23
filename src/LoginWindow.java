@@ -1,16 +1,6 @@
-import java.awt.Font;
-import java.awt.GridLayout;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
+import java.awt.*;
 
-// The first window: asks for username and password.
-// INHERITANCE: LoginWindow "is a" JFrame (a window).
 public class LoginWindow extends JFrame {
     private Store store;
     private JTextField usernameField = Style.textField();
@@ -22,12 +12,11 @@ public class LoginWindow extends JFrame {
         setTitle("JavaPOS - Login");
         setSize(640, 360);
         setResizable(false);
-        setLocationRelativeTo(null); // center on screen
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Style.styleField(passwordField);
 
-        // ----- Left side: blue panel with the app name -----
         JLabel appName = new JLabel("JavaPOS");
         appName.setFont(Style.boldFont(36));
         appName.setForeground(Style.WHITE);
@@ -41,15 +30,14 @@ public class LoginWindow extends JFrame {
         left.add(appName);
         left.add(subtitle);
 
-        // ----- Right side: the login form -----
         JButton loginButton = Style.button("Log In", Style.BLUE);
-        loginButton.addActionListener(e -> login()); // run login() when clicked
-        getRootPane().setDefaultButton(loginButton); // pressing Enter clicks Log In
+        loginButton.addActionListener(e -> login());
+        getRootPane().setDefaultButton(loginButton);
 
         JLabel welcome = Style.title("Welcome back!");
         welcome.setFont(Style.boldFont(22));
 
-        JPanel form = new JPanel(new GridLayout(7, 1, 0, 6)); // 7 rows, 1 column
+        JPanel form = new JPanel(new GridLayout(7, 1, 0, 6));
         form.setBackground(Style.WHITE);
         form.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         form.add(welcome);
@@ -60,7 +48,6 @@ public class LoginWindow extends JFrame {
         form.add(passwordField);
         form.add(loginButton);
 
-        // Left and right side by side
         JPanel main = new JPanel(new GridLayout(1, 2));
         main.add(left);
         main.add(form);
@@ -80,6 +67,6 @@ public class LoginWindow extends JFrame {
         }
 
         new MainWindow(store, user).setVisible(true);
-        dispose(); // close the login window
+        dispose();
     }
 }

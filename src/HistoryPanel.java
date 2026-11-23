@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-// The "History" tab: two summary boxes on top, list of all past sales below.
 public class HistoryPanel extends JPanel {
     private Store store;
     private DefaultTableModel model = new DefaultTableModel(new String[] {"ID", "Date", "Cashier", "Total"}, 0);
@@ -21,12 +20,10 @@ public class HistoryPanel extends JPanel {
         this.store = store;
         Style.styleTable(table);
 
-        // ----- Top: two summary boxes -----
         JPanel stats = new JPanel(new GridLayout(1, 2, 14, 0));
         stats.add(Style.statCard("Total Sales", totalSalesLabel, Style.GREEN));
         stats.add(Style.statCard("Transactions", countLabel, Style.BLUE));
 
-        // ----- Bottom: the table -----
         JButton viewButton = Style.button("View Receipt", Style.BLUE);
         viewButton.addActionListener(e -> viewReceipt());
 

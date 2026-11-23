@@ -1,8 +1,4 @@
-// ABSTRACTION + INHERITANCE
-// User is "abstract": you cannot create a plain User.
-// You can only create an Admin or a Cashier (they extend User).
 public abstract class User {
-    // ENCAPSULATION: fields are private, other classes use the getters.
     private String username;
     private String password;
     private String fullName;
@@ -29,7 +25,6 @@ public abstract class User {
         return fullName;
     }
 
-    // Setters check the value first (ENCAPSULATION).
     public void setFullName(String fullName) {
         if (fullName == null || fullName.trim().isEmpty()) {
             throw new IllegalArgumentException("Full name cannot be empty.");
@@ -44,7 +39,6 @@ public abstract class User {
         this.password = password;
     }
 
-    // Abstract methods: no body here. Admin and Cashier must write their own.
     public abstract String getRole();
 
     public abstract boolean canManageProducts();

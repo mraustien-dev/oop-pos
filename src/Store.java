@@ -2,8 +2,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-// The "brain" of the app. It keeps all the lists and does the work.
-// The screens (UI) ask the Store to do things; they never touch the files.
 public class Store {
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
@@ -16,9 +14,6 @@ public class Store {
         loadTransactions();
     }
 
-    // ===================== LOGIN =====================
-
-    // Returns the user if the username and password match, otherwise null.
     public User login(String username, String password) {
         for (User user : users) {
             if (user.getUsername().equals(username) && user.checkPassword(password)) {
@@ -28,16 +23,12 @@ public class Store {
         return null;
     }
 
-    // ===================== USERS (Admin only) =====================
-
-    // Creates a new Admin or Cashier account and saves it.
     public void addUser(String username, String password, String fullName, String role) {
         username = username.trim();
         fullName = fullName.trim();
         if (username.isEmpty() || password.isEmpty() || fullName.isEmpty()) {
             throw new IllegalArgumentException("Please fill in all the fields.");
         }
-        // Commas would break the users.csv file.
         if (username.contains(",") || password.contains(",") || fullName.contains(",")) {
             throw new IllegalArgumentException("Commas are not allowed.");
         }
@@ -47,7 +38,6 @@ public class Store {
         if (findUser(username) != null) {
             throw new IllegalArgumentException("Username \"" + username + "\" is already taken.");
         }
-        // POLYMORPHISM: both are stored in the same list of User.
         if (role.equals("Admin")) {
             users.add(new Admin(username, password, fullName));
         } else {
@@ -56,9 +46,6 @@ public class Store {
         saveUsers();
     }
 
-    // Changes a user's full name, password and role. The username stays the same
-    // because the sales history remembers who sold each item by username.
-    // A blank newPassword keeps the old password.
     public void updateUser(User user, String fullName, String newPassword, String role, User loggedIn) {
         fullName = fullName.trim();
         if (fullName.isEmpty()) {
@@ -77,8 +64,6 @@ public class Store {
 
         String password = newPassword.isEmpty() ? user.getPassword() : newPassword;
         if (roleChanged) {
-            // The role comes from the class (Admin or Cashier), so we make a new
-            // object of the other class and put it in the same spot in the list.
             User replacement;
             if (role.equals("Admin")) {
                 replacement = new Admin(user.getUsername(), password, fullName);
@@ -127,8 +112,6 @@ public class Store {
         return users;
     }
 
-    // ===================== PRODUCTS =====================
-
     public void addProduct(String name, double price, int stock) {
         Product product = new Product(nextProductId(), name, price, stock);
         products.add(product);
@@ -150,7 +133,6 @@ public class Store {
         saveProducts();
     }
 
-    // Finds the first unused ID: P1, P2, P3...
     private String nextProductId() {
         int number = 1;
         while (findProduct("P" + number) != null) {
@@ -172,8 +154,6 @@ public class Store {
         return products;
     }
 
-    // ===================== CHECKOUT =====================
-
     public Transaction checkout(Cart cart, double cash, User cashier) {
         if (cart.isEmpty()) {
             throw new IllegalArgumentException("The cart is empty.");
@@ -188,7 +168,6 @@ public class Store {
             }
         }
 
-        // Build the item list text and take the items out of stock.
         String itemsText = "";
         for (CartItem item : cart.getItems()) {
             Product product = item.getProduct();
@@ -226,15 +205,11 @@ public class Store {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 
-    // ===================== SAVING AND LOADING =====================
-    // Every file uses one line per record, values separated by commas.
-
     private void loadUsers() {
-        // users.csv line: username,password,fullName,role
         for (String line : files.readLines("users.csv")) {
             String[] parts = line.split(",");
             if (parts.length < 4) {
-                continue; // skip broken lines
+                continue;
             }
             if (parts[3].equals("Admin")) {
                 users.add(new Admin(parts[0], parts[1], parts[2]));
@@ -242,7 +217,6 @@ public class Store {
                 users.add(new Cashier(parts[0], parts[1], parts[2]));
             }
         }
-        // First run: create the default accounts.
         if (users.isEmpty()) {
             users.add(new Admin("admin", "admin123", "Store Admin"));
             users.add(new Cashier("cashier", "cashier123", "Store Cashier"));
@@ -259,7 +233,6 @@ public class Store {
     }
 
     private void loadProducts() {
-        // First run: add some sample products.
         if (!files.exists("products.csv")) {
             products.add(new Product("P1", "Coke 330ml", 20.00, 50));
             products.add(new Product("P2", "Bread Loaf", 45.00, 20));
@@ -268,7 +241,6 @@ public class Store {
             saveProducts();
             return;
         }
-        // products.csv line: id,name,price,stock
         for (String line : files.readLines("products.csv")) {
             String[] parts = line.split(",");
             try {
@@ -289,7 +261,6 @@ public class Store {
     }
 
     private void loadTransactions() {
-        // transactions.csv line: id,dateTime,cashier,total,cash,items
         for (String line : files.readLines("transactions.csv")) {
             String[] parts = line.split(",");
             try {

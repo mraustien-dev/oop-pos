@@ -1,5 +1,3 @@
-// ENCAPSULATION: all fields are private.
-// The only way to change them is through methods that CHECK the values first.
 public class Product {
     private String id;
     private String name;
@@ -15,7 +13,6 @@ public class Product {
         update(name, price);
     }
 
-    // Change name and price together, only if both are valid.
     public void update(String name, double price) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Product name is required.");

@@ -10,7 +10,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-// The "Sell" tab. Left side: products. Right side: the cart and payment.
 public class SellPanel extends JPanel {
     private Store store;
     private User user;
@@ -32,7 +31,6 @@ public class SellPanel extends JPanel {
         Style.styleTable(productTable);
         Style.styleTable(cartTable);
 
-        // ----- Left card: products -----
         JButton addOneButton = Style.button("+ Add 1", Style.BLUE);
         JButton addManyButton = Style.button("+ Add Quantity", Style.GRAY);
         addOneButton.addActionListener(e -> addOne());
@@ -47,7 +45,6 @@ public class SellPanel extends JPanel {
         left.add(Style.scroll(productTable), BorderLayout.CENTER);
         left.add(productButtons, BorderLayout.SOUTH);
 
-        // ----- Right card: cart and payment -----
         JButton removeButton = Style.button("Remove Item", Style.RED);
         JButton clearButton = Style.button("Clear Cart", Style.GRAY);
         JButton payButton = Style.button("PAY", Style.GREEN);
@@ -55,14 +52,13 @@ public class SellPanel extends JPanel {
         removeButton.addActionListener(e -> removeItem());
         clearButton.addActionListener(e -> clearCart());
         payButton.addActionListener(e -> pay());
-        cashField.addActionListener(e -> pay()); // pressing Enter in the cash box also pays
+        cashField.addActionListener(e -> pay());
 
         JPanel cartButtons = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         cartButtons.setOpaque(false);
         cartButtons.add(removeButton);
         cartButtons.add(clearButton);
 
-        // The total in big green text
         totalLabel.setFont(Style.boldFont(28));
         totalLabel.setForeground(Style.GREEN);
         JPanel totalRow = new JPanel(new BorderLayout());
@@ -70,7 +66,6 @@ public class SellPanel extends JPanel {
         totalRow.add(Style.smallLabel("TOTAL"), BorderLayout.WEST);
         totalRow.add(totalLabel, BorderLayout.EAST);
 
-        // Cash box + PAY button
         JPanel payRow = new JPanel(new BorderLayout(8, 0));
         payRow.setOpaque(false);
         payRow.add(new JLabel("Cash:"), BorderLayout.WEST);
@@ -87,7 +82,6 @@ public class SellPanel extends JPanel {
         right.add(Style.scroll(cartTable), BorderLayout.CENTER);
         right.add(bottom, BorderLayout.SOUTH);
 
-        // Put left and right side by side
         setLayout(new GridLayout(1, 2, 14, 0));
         setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(left);
@@ -96,7 +90,6 @@ public class SellPanel extends JPanel {
         refresh();
     }
 
-    // Returns the product picked in the table, or null if none.
     private Product getSelectedProduct() {
         int row = productTable.getSelectedRow();
         if (row == -1) {
@@ -112,7 +105,7 @@ public class SellPanel extends JPanel {
             return;
         }
         try {
-            cart.addItem(product); // overloaded method: adds 1
+            cart.addItem(product);
             refreshCart();
         } catch (IllegalArgumentException e) {
             showError(e.getMessage());
@@ -126,11 +119,11 @@ public class SellPanel extends JPanel {
         }
         String input = JOptionPane.showInputDialog(this, "How many " + product.getName() + "?");
         if (input == null) {
-            return; // user pressed Cancel
+            return;
         }
         try {
             int quantity = Integer.parseInt(input.trim());
-            cart.addItem(product, quantity); // overloaded method: adds "quantity"
+            cart.addItem(product, quantity);
             refreshCart();
         } catch (NumberFormatException e) {
             showError("Please enter a whole number.");
@@ -173,9 +166,8 @@ public class SellPanel extends JPanel {
         JOptionPane.showMessageDialog(this, message, "Oops", JOptionPane.WARNING_MESSAGE);
     }
 
-    // Reload both tables.
     public void refresh() {
-        productModel.setRowCount(0); // remove all rows
+        productModel.setRowCount(0);
         for (Product p : store.getProducts()) {
             productModel.addRow(new Object[] {p.getId(), p.getName(), String.format("%.2f", p.getPrice()), p.getStock()});
         }
