@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 public class FileManager {
     private String folder;
@@ -18,7 +19,7 @@ public class FileManager {
         if (!file.exists()) {
             return lines;
         }
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
@@ -33,7 +34,7 @@ public class FileManager {
 
     public void writeLines(String fileName, ArrayList<String> lines) {
         File file = new File(folder, fileName);
-        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+        try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8))) {
             for (String line : lines) {
                 writer.println(line);
             }

@@ -1,15 +1,25 @@
 public class Product {
     private String id;
     private String name;
+    private String category;
     private double price;
     private int stock;
+    private int reorderLevel;
 
-    public Product(String id, String name, double price, int stock) {
+    public Product(String id, String name, String category, double price, int stock, int reorderLevel) {
         if (stock < 0) {
             throw new IllegalArgumentException("Stock cannot be negative.");
         }
+        if (reorderLevel < 0) {
+            throw new IllegalArgumentException("Reorder level cannot be negative.");
+        }
+        if (category == null || category.trim().isEmpty() || category.contains(",")) {
+            category = "Other";
+        }
         this.id = id;
+        this.category = category.trim();
         this.stock = stock;
+        this.reorderLevel = reorderLevel;
         update(name, price);
     }
 
@@ -50,6 +60,14 @@ public class Product {
 
     public String getName() {
         return name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public int getReorderLevel() {
+        return reorderLevel;
     }
 
     public double getPrice() {

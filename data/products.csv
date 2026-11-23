@@ -1,4 +1,202 @@
-P1,Coke 330ml,20.00,48
-P2,Bread Loaf,45.00,18
-P3,Instant Noodles,15.00,98
-P4,Bottled Water,12.00,76
+id,name,category,price,stock,reorderLevel
+P0001,Great Taste White 3in1,Coffee,8.00,80,15
+P0002,Milo Sachet 24g,Coffee,9.00,70,15
+P0003,Nescafe Classic 25g,Coffee,12.00,50,10
+P0004,Kopiko Brown 3in1,Coffee,8.00,80,15
+P0005,Nescafe 3in1 Original,Coffee,9.00,70,15
+P0006,Kopiko Blanca 3in1,Coffee,8.00,70,15
+P0007,Kopiko Cappuccino Sachet,Coffee,9.00,60,12
+P0008,Kopiko Black 2in1 Sachet,Coffee,7.00,60,12
+P0009,Great Taste Mocha 3in1,Coffee,8.00,60,12
+P0010,Great Taste Premium 3in1,Coffee,9.00,60,12
+P0011,Nescafe Creamy White 3in1,Coffee,9.00,60,12
+P0012,Nescafe Gold 50g,Coffee,95.00,12,3
+P0013,Café Puro 100g,Coffee,55.00,15,4
+P0014,Ovaltine Sachet 24g,Coffee,9.00,50,10
+P0015,Milo 3in1 Sachet,Coffee,9.00,50,10
+P0016,Nescafe Classic 50g,Coffee,45.00,15,4
+P0017,Bear Brand 33g,Dairy,14.00,30,5
+P0018,Bear Brand Adult Plus 33g,Dairy,15.00,30,5
+P0019,Bear Brand Swak Pack 33g,Dairy,14.00,30,5
+P0020,Alaska Evap Milk 154ml,Dairy,28.00,24,6
+P0021,Alaska Condensada 300ml,Dairy,48.00,18,4
+P0022,Alaska Powdered Milk 33g,Dairy,12.00,40,8
+P0023,Nestle Cream 250ml,Dairy,45.00,15,4
+P0024,Birch Tree Fortified 33g,Dairy,13.00,30,6
+P0025,Milk Magic Powdered Milk 33g,Dairy,11.00,30,6
+P0026,Yakult 5s,Dairy,65.00,15,4
+P0027,Cheese Slice 8s,Dairy,55.00,12,3
+P0028,Eden Cheese 165g,Dairy,52.00,15,4
+P0029,Magnolia Butter 100g,Dairy,48.00,12,3
+P0030,Star Margarine 100g,Dairy,28.00,20,5
+P0031,Selecta Fresh Milk 1L,Dairy,95.00,10,3
+P0032,Safeguard Soap 85g,Toiletries,38.00,24,5
+P0033,Palmolive Soap 90g,Toiletries,32.00,24,5
+P0034,Dove Soap 90g,Toiletries,55.00,15,4
+P0035,Colgate 25g,Toiletries,15.00,40,8
+P0036,Close-Up Toothpaste 25g,Toiletries,16.00,35,8
+P0037,Hapee Toothpaste 25g,Toiletries,14.00,35,8
+P0038,Head & Shoulders Sachet,Toiletries,9.00,60,12
+P0039,Palmolive Shampoo Sachet,Toiletries,7.00,60,12
+P0040,Pantene Shampoo Sachet,Toiletries,8.00,60,12
+P0041,Clear Shampoo Sachet,Toiletries,8.00,60,12
+P0042,Cream Silk Conditioner Sachet,Toiletries,7.00,60,12
+P0043,Rexona Deodorant Sachet,Toiletries,12.00,40,8
+P0044,Modess Napkin 8s,Toiletries,42.00,20,5
+P0045,Whisper Napkin 8s,Toiletries,45.00,20,5
+P0046,Cotton Buds 100s,Toiletries,28.00,20,5
+P0047,Tissue Roll 2-ply,Toiletries,12.00,50,10
+P0048,Datu Puti Suka 385ml,Condiments,22.00,18,5
+P0049,Silver Swan Soy Sauce 385ml,Condiments,24.00,18,5
+P0050,Datu Puti Soy Sauce 385ml,Condiments,22.00,18,5
+P0051,Mang Tomas Sarsa 100g,Condiments,25.00,20,5
+P0052,UFC Banana Ketchup 320g,Condiments,28.00,20,5
+P0053,Jufran Banana Sauce 320g,Condiments,26.00,20,5
+P0054,Knorr Sinigang Mix 22g,Condiments,12.00,40,10
+P0055,Maggi Magic Sarap 8g,Condiments,5.00,80,15
+P0056,Ajinomoto 50g,Condiments,12.00,40,10
+P0057,Lucky 7 Vinegar Sachet,Condiments,5.00,50,10
+P0058,Silver Swan Patis 385ml,Condiments,20.00,18,5
+P0059,Lady's Choice Mayonnaise 80ml,Condiments,32.00,20,5
+P0060,Brown Sugar 1/4kg,Condiments,18.00,30,6
+P0061,Cooking Oil Sachet 30ml,Condiments,10.00,60,12
+P0062,Surf Powder 66g,Household,12.00,50,10
+P0063,Tide Powder 66g,Household,13.00,45,10
+P0064,Ariel Powder 66g,Household,14.00,40,10
+P0065,Downy Sachet 20ml,Household,8.00,60,12
+P0066,Joy Dishwashing Liquid 250ml,Household,38.00,20,5
+P0067,Zonrox Bleach 250ml,Household,22.00,20,5
+P0068,Katol Mosquito Coil 10s,Household,22.00,30,6
+P0069,Efficascent Oil 25ml,Household,45.00,15,4
+P0070,Candle Pack 6s,Household,35.00,20,5
+P0071,Garbage Bag Small 10s,Household,25.00,20,5
+P0072,Sponge Scouring Pad,Household,10.00,40,8
+P0073,Plastic Cup 12oz 10s,Household,20.00,20,5
+P0074,Aluminum Foil Small,Household,38.00,10,3
+P0075,Egg Tray 30s,Fresh,230.00,10,3
+P0076,Onion (per piece),Fresh,8.00,60,12
+P0077,Garlic (per piece),Fresh,5.00,80,15
+P0078,Tomato (per piece),Fresh,6.00,50,10
+P0079,Potato 1/4kg,Fresh,30.00,20,5
+P0080,Carrots 1/4kg,Fresh,28.00,15,4
+P0081,Ginger 100g,Fresh,15.00,20,5
+P0082,Marlboro Red,Cigarettes,12.00,100,20
+P0083,Marlboro Lights,Cigarettes,12.00,100,20
+P0084,Fortune Red,Cigarettes,10.00,100,20
+P0085,Fortune Menthol,Cigarettes,10.00,80,15
+P0086,Winston Red,Cigarettes,11.00,80,15
+P0087,Camel Yellow,Cigarettes,12.00,60,12
+P0088,Hope Luxury,Cigarettes,9.00,80,15
+P0089,Mighty Red,Cigarettes,9.00,80,15
+P0090,Philip Morris Red,Cigarettes,11.00,60,12
+P0091,Lucky Strike Red,Cigarettes,12.00,60,12
+P0092,More Menthol,Cigarettes,11.00,40,8
+P0093,Champion Red,Cigarettes,9.00,60,12
+P0094,Red Horse 500ml,Alcohol,65.00,48,10
+P0095,San Miguel Pale Pilsen 500ml,Alcohol,60.00,48,10
+P0096,San Miguel Light 500ml,Alcohol,60.00,48,10
+P0097,San Mig Light Can 330ml,Alcohol,55.00,24,6
+P0098,Emperador Light 700ml,Alcohol,105.00,24,5
+P0099,Emperador Brandy 750ml,Alcohol,135.00,18,4
+P0100,Ginebra San Miguel 350ml,Alcohol,75.00,24,5
+P0101,Coke 1.5L,Drinks,75.00,48,5
+P0102,Piattos 85g,Snacks,38.00,20,5
+P0103,Lucky Me Pancit Canton,Noodles,16.00,60,10
+P0104,Coca-cola 1.5L,Drinks,75.00,35,6
+P0105,Mountain Dew 1.5L,Drinks,75.00,30,9
+P0106,Sprite 1.5 L,Drinks,70.00,15,6
+P0201,Argentina Corned Beef 150g,Canned Goods,120.00,25,5
+P0107,Nestle Bear Brand 1L,Milk,120.00,40,5
+P0108,Mega Sardines 155g,Canned Goods,50.00,30,5
+P0109,Century Tuna Flakes 180g,Canned Goods,65.00,20,5
+P0110,555 Sardines 155g,Canned Goods,45.00,15,5
+P0111,Del Monte Pineapple Juice 1L,Juices,90.00,25,5
+P0112,Del Monte Pineapple Tidbits 567g,Canned Goods,80.00,20,5
+P0113,Del Monte Fruit Cocktail 567g,Canned Goods,85.00,30,5
+P0114,Del Monte Corned Beef 150g,Canned Goods,110.00,15,5
+P0115,Del Monte Tomato Sauce 250g,Canned Goods,30.00,40,5
+P0116,Del Monte Spaghetti Sauce 250g,Canned Goods,35.00,25,5
+P0117,Royal Tru-Orange 1.5L,Drinks,70.00,20,5
+P0118,Pepsi 1.5L,Drinks,75.00,35,5
+P0119,7Up 1.5L,Drinks,70.00,30,6
+P0120,Mountain Dew 500ml,Drinks,40.00,50,9
+P0121,Sprite 500ml,Drinks,35.00,45,5
+P0122,Beef Loaf 150g,Canned Goods,95.00,20,5
+P0123,Spam Classic 340g,Canned Goods,150.00,15,5
+P0124,Tuna Flakes 180g,Canned Goods,60.00,25,8
+P0125,Lucky Me Instant Noodles 60g,Noodles,12.00,100,10
+P0126,Lucky Me Instant Noodles 70g,Noodles,15.00,0,10
+P0127,Tuna Spicy 180g,Canned Goods,65.00,30,5
+P0128,Purefoods Corned Beef 150g,Canned Goods,130.00,20,5
+P0129,San Marino Tuna Flakes 180g,Canned Goods,70.00,25,5
+P0130,San Marino Sardines 155g,Canned Goods,55.00,0,5
+P0131,Fanta 1.5L,Drinks,70.00,40,5
+P0132,Coca-cola zero 1.5L,Drinks,75.00,30,5
+P0133,CDO meatloaf 150g,Canned Goods,100.00,20,5
+P0134,Pancit Canton 60g,Noodles,12.00,80,10
+P0135,Maling Launcheon meat 150g,Canned Goods,90.00,25,5
+P0136,Mega Sardines 155g,Canned Goods,50.00,30,12
+P0137,Ligo Sardines 155g,Canned Goods,45.00,20,5
+P0138,Pepsi Black 1.5L,Drinks,75.00,35,5
+P0139,Argentina Corned Beef 150g,Canned Goods,120.00,25,10
+P0140,Sardines spicy 155g,Canned Goods,50.00,30,5
+P0141,Mirinda 1.5L,Drinks,70.00,20,5
+P0142,Tomato Sauce 250g,Canned Goods,30.00,40,5
+P0143,Spaghetti Sauce 250g,Canned Goods,35.00,25,5
+P0144,Tuna spicy 180g,Canned Goods,65.00,30,3
+P0145,Wow Ulam 150g,Canned Goods,80.00,20,5
+P0146,Pancit Canton 70g,Noodles,15.00,90,10
+P0147,Pancit Canton Spicy 70g,Noodles,15.00,80,10
+P0148,Delimondo Corned Beef 150g,Canned Goods,125.00,20,5
+P0149,Hunts Pork & Beans 425g,Canned Goods,55.00,30,5
+P0150,Dr.Pepper 1.5L,Drinks,75.00,40,5
+P0151,Lucky Me Beef Mami 60g,Noodles,12.00,100,10
+P0152,Lucky Me Chicken Mami 60g,Noodles,12.00,100,10
+P0153,Lucky Me Pork Mami 60g,Noodles,12.00,0,10
+P0154,Nissin Cup Noodles 70g,Noodles,15.00,80,10
+P0155,Buldak Samyang 140g,Noodles,150.00,50,5
+P0156,Gatorade 500ml,Drinks,45.00,60,5
+P0157,Sting Energy Drink 100ml,Drinks,50.00,40,5
+P0158,Nova Chips 50g,Snacks,25.00,30,5
+P0159,Chippy 50g,Snacks,20.00,40,5
+P0160,Kisses chocolate 100g,Snacks,30.00,50,5
+P0161,Rebisco Crackers 100g,Snacks,25.00,60,6
+P0162,Kitkat 100g,Snacks,99.00,30,5
+P0163,Chocnut 100g,Snacks,20.00,50,5
+P0164,MArshmallow 100g,Snacks,55.00,40,5
+P0165,Cornick 100g,Snacks,25.00,60,5
+P0166,Popcorn 100g,Snacks,30.00,50,5
+P0167,Cloud 9 28g,Chocolates,11.00,40,10
+P0168,Choko Mucho 100g,Snacks,25.00,50,6
+P0169,Skyflakes 25g,Snacks,67.50,100,10
+P0170,Canned Sweet Corn 425g,Canned Goods,55.00,30,6
+P0171,Wilkins Distilled Water 1L,Drinks,25.00,50,5
+P0172,Nescafe Ready-to-Drink 180ml,Drinks,45.00,40,14
+P0173,Chuckie Chocolate Drink 180ml,Drinks,30.00,60,5
+P0174,Lipton Iced Tea 500ml,Drinks,35.00,50,5
+P0175,Summit Water 500ml,Drinks,20.00,60,10
+P0176,Samyang Buldak Carbonara 140g,Noodles,150.00,50,5
+P0177,Nissin Cup Noodles Seafood 70g,Noodles,15.00,80,10
+P0178,Misua 60g,Noodles,12.00,100,10
+P0179,Sotanghon 60g,Noodles,12.00,100,10
+P0180,Royal Spaghetti 250g,Noodles,35.00,25,5
+P0181,Doritos 50g,Snacks,30.00,40,5
+P0182,Pringles 50g,Snacks,45.00,30,10
+P0183,Cheez Whiz 200g,Snacks,120.00,20,5
+P0184,Rebisco Crackers 50g,Snacks,15.00,0,5
+P0185,Pocari Sweat 500ml,Drinks,40.00,50,5
+P0186,Oreo 100g,Snacks,55.00,40,5
+P0187,Mentos Mint 50g,Candy,25.00,60,8
+P0188,Flat Tops Lollipops 50g,Candy,20.00,50,8
+P0189,Yema 100g,Candy,30.00,40,5
+P0190,Gummy Worms 100g,Candy,35.00,30,5
+P0191,Oishi Prawn Crackers 50g,Snacks,25.00,60,5
+P0192,Garlic Peanuts 100g,Snacks,30.00,50,5
+P0193,Frutos 100g,Candy,25.00,60,7
+P0194,Maxx Candy 100g,Candy,30.00,50,6
+P0195,Tortillos 100g,Chips,25.00,60,10
+P0196,Chicharron 100g,Chips,30.00,50,5
+P0197,Cheese Balls 100g,Chips,35.00,40,10
+P0198,Potato Chips 100g,Chips,30.00,50,5
+P0199,Nachos 100g,Chips,25.00,60,10
+P0200,V-cut Original 100g,Chips,30.00,50,8

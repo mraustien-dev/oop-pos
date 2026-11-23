@@ -3,15 +3,29 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Store {
+    private static final String PRODUCT_HEADER = "id,name,category,price,stock,reorderLevel";
     private ArrayList<User> users = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Transaction> transactions = new ArrayList<>();
-    private FileManager files = new FileManager("data");
+    private FileManager files = new FileManager(findDataFolder());
 
     public Store() {
         loadUsers();
         loadProducts();
         loadTransactions();
+    }
+
+    private static String findDataFolder() {
+        try {
+            java.io.File classFolder = new java.io.File(Store.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            java.io.File projectFolder = classFolder.getParentFile();
+            if (projectFolder != null && new java.io.File(projectFolder, "src").isDirectory()) {
+                return new java.io.File(projectFolder, "data").getPath();
+            }
+        } catch (Exception e) {
+            System.out.println("Could not find the project folder, using ./data");
+        }
+        return "data";
     }
 
     public User login(String username, String password) {
@@ -113,7 +127,7 @@ public class Store {
     }
 
     public void addProduct(String name, double price, int stock) {
-        Product product = new Product(nextProductId(), name, price, stock);
+        Product product = new Product(nextProductId(), name, "Other", price, stock, 5);
         products.add(product);
         saveProducts();
     }
@@ -135,10 +149,10 @@ public class Store {
 
     private String nextProductId() {
         int number = 1;
-        while (findProduct("P" + number) != null) {
+        while (findProduct(String.format("P%04d", number)) != null) {
             number++;
         }
-        return "P" + number;
+        return String.format("P%04d", number);
     }
 
     public Product findProduct(String id) {
@@ -234,18 +248,22 @@ public class Store {
 
     private void loadProducts() {
         if (!files.exists("products.csv")) {
-            products.add(new Product("P1", "Coke 330ml", 20.00, 50));
-            products.add(new Product("P2", "Bread Loaf", 45.00, 20));
-            products.add(new Product("P3", "Instant Noodles", 15.00, 100));
-            products.add(new Product("P4", "Bottled Water", 12.00, 80));
+            products.add(new Product("P0001", "Coke 330ml", "Drinks", 20.00, 50, 10));
+            products.add(new Product("P0002", "Bread Loaf", "Bakery", 45.00, 20, 5));
+            products.add(new Product("P0003", "Instant Noodles", "Noodles", 15.00, 100, 10));
+            products.add(new Product("P0004", "Bottled Water", "Drinks", 12.00, 80, 10));
             saveProducts();
             return;
         }
         for (String line : files.readLines("products.csv")) {
-            String[] parts = line.split(",");
+            if (line.startsWith(PRODUCT_HEADER)) {
+                continue;
+            }
+            String[] parts = line.split(",", -1);
             try {
-                products.add(new Product(parts[0], parts[1],
-                        Double.parseDouble(parts[2]), Integer.parseInt(parts[3])));
+                products.add(new Product(parts[0].trim(), parts[1].trim(), parts[2].trim(),
+                        Double.parseDouble(parts[3].trim()), Integer.parseInt(parts[4].trim()),
+                        Integer.parseInt(parts[5].trim())));
             } catch (Exception e) {
                 System.out.println("Skipped a bad product line: " + line);
             }
@@ -254,8 +272,10 @@ public class Store {
 
     private void saveProducts() {
         ArrayList<String> lines = new ArrayList<>();
+        lines.add(PRODUCT_HEADER);
         for (Product p : products) {
-            lines.add(p.getId() + "," + p.getName() + "," + String.format("%.2f", p.getPrice()) + "," + p.getStock());
+            lines.add(p.getId() + "," + p.getName() + "," + p.getCategory() + ","
+                    + String.format("%.2f", p.getPrice()) + "," + p.getStock() + "," + p.getReorderLevel());
         }
         files.writeLines("products.csv", lines);
     }
